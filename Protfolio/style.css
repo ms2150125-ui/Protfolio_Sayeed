@@ -1,0 +1,113 @@
+/* বেসিক সেটআপ */
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #05080a; /* ডার্ক ব্যাকগ্রাউন্ড */
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+}
+
+.hero-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0 10%;
+}
+
+/* নেভিগেশন স্টাইল */
+.nav-bar {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.back-home {
+    color: #00ffcc;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+/* বড় টাইটেল */
+.glitch-text {
+    font-size: 80px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    letter-spacing: 5px;
+    text-shadow: 2px 2px #00ffcc44;
+}
+
+.description {
+    max-width: 500px;
+    line-height: 1.6;
+    color: #b0b0b0;
+    margin-bottom: 40px;
+}
+
+/* --- সেই স্পেশাল বাটন ডিজাইন --- */
+.button-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.cyber-btn {
+    background: transparent;
+    color: #00ffcc;
+    border: 2px solid #00ffcc;
+    padding: 12px 40px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    text-transform: uppercase;
+    /* কোণা কাটার ম্যাজিক */
+    clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+    transition: 0.3s;
+}
+
+.cyber-btn:hover {
+    background: #00ffcc;
+    color: #05080a;
+    box-shadow: 0 0 20px #00ffcc;
+}
+
+/* বাটনের পাশের ব্র্যাকেট লাইন */
+.side-lines-left, .side-lines-right {
+    width: 20px;
+    height: 40px;
+    border: 1px solid #00ffcc;
+}
+
+.side-lines-left { border-right: none; }
+.side-lines-right { border-left: none; }
+
+/* গোল ডেকোরেশন এলিমেন্ট */
+.deco-circle {
+    position: absolute;
+    right: 5%;
+    top: 30%;
+    width: 250px;
+    height: 250px;
+    border: 1px dashed #00ffcc55;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inner-circle {
+    width: 150px;
+    height: 150px;
+    border: 2px solid #00ffcc;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00ffcc;
+    font-family: monospace;
+}

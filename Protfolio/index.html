@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abu Sayeed | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+ 
+    :root {
+      --g: #00ff88;
+      --gd: #00cc6a;
+      --gl: rgba(0, 255, 136, 0.12);
+      --dk: #040d0a;
+      --dk2: #081510;
+      --dk3: #0d1f18;
+      --cb: rgba(0, 255, 136, 0.06);
+      --br: rgba(0, 255, 136, 0.18);
+      --brb: rgba(0, 255, 136, 0.45);
+      --tx: #c8e8d8;
+      --txd: rgba(200, 232, 216, 0.45);
+    }
+ 
+    html {
+      scroll-behavior: smooth;
+    }
+ 
+    body {
+      background: var(--dk);
+      color: var(--tx);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 16px;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+ 
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0, 255, 136, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 136, 0.025) 1px, transparent 1px);
+      background-size: 44px 44px;
+      pointer-events: none;
+      z-index: 0;
+    }
+ 
+    /* ========== NAVIGATION ========== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      background: rgba(4, 13, 10, 0.95);
+      border-bottom: 1px solid var(--br);
+      backdrop-filter: blur(8px);
+    }
+ 
+    .nav-logo {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.9rem;
+      color: var(--g);
+      letter-spacing: 2px;
+    }
+ 
+    .nav-logo small {
+      display: block;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--txd);
+      letter-spacing: 1px;
+    }
+ 
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+ 
+    .nav-links a {
+      color: var(--txd);
+      text-decoration: none;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      position: relative;
+      padding-bottom: 3px;
+    }
+ 
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--g);
+      transition: width 0.3s;
+    }
+ 
+    .nav-links a:hover {
+      color: var(--g);
+    }
+ 
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+ 
+    /* ========== SECTIONS ========== */
+    .page {
+      position: relative;
+      z-index: 1;
+    }
+ 
+    section {
+      padding: 6rem 4rem;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+ 
+    .sec-divider {
+      border: none;
+      border-top: 1px solid var(--br);
+      margin: 0;
+      position: relative;
+      z-index: 1;
+    }
+ 
+    /* ========== HOME ========== */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 8rem;
+      max-width: 100%;
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
+ 
+    .htag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--g);
+      letter-spacing: 3px;
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.2s forwards;
+    }
+ 
+    .htag::before { content: '[ '; }
+    .htag::after  { content: ' ]'; }
+ 
+    h1.htitle {
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 900;
+      color: var(--g);
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 0.75rem;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.4s forwards;
+    }
+ 
+    .hsub {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.9rem;
+      color: var(--txd);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.6s forwards;
+    }
+ 
+    .hdesc {
+      font-size: 1.05rem;
+      color: var(--tx);
+      max-width: 520px;
+      line-height: 1.85;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.8s forwards;
+    }
+ 
+    .hbtns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.6s 1s forwards;
+    }
+ 
+    .btn {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.85rem 1.8rem;
+      border: 1px solid var(--g);
+      background: transparent;
+      color: var(--g);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    }
+ 
+    .btn:hover {
+      background: var(--g);
+      color: var(--dk);
+    }
+ 
+    .btn-ghost {
+      border-color: var(--br);
+      color: var(--txd);
+    }
+ 
+    .btn-ghost:hover {
+      background: var(--gl);
+      color: var(--g);
+      border-color: var(--g);
+    }
+ 
+    .hstats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 3.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s 1.2s forwards;
+    }
+ 
+    .hstat {
+      border-left: 2px solid var(--g);
+      padding-left: 1rem;
+    }
+ 
+    .hstat-num {
+      font-family: 'Orbitron', monospace;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--g);
+      display: block;
+    }
+ 
+    .hstat-lbl {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--txd);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+ 
+    /* ========== SECTION HEADERS ========== */
+    .slabel {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--g);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+ 
+    h2.stitle {
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--tx);
+      margin-bottom: 0.6rem;
+    }
+ 
+    h2.stitle em {
+      font-style: normal;
+      color: var(--g);
+    }
+ 
+    .sline {
+      width: 50px;
+      height: 2px;
+      background: var(--g);
+      margin-bottom: 2.5rem;
+    }
+ 
+    /* ========== ABOUT ========== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+ 
+    .about-text p {
+      color: var(--tx);
+      line-height: 1.9;
+      margin-bottom: 1.2rem;
+      font-size: 1.02rem;
+    }
+ 
+    .info-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.6rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.82rem;
+    }
+ 
+    .info-key {
+      color: var(--txd);
+      min-width: 90px;
+    }
+ 
+    .info-val {
+      color: var(--g);
+    }
+ 
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1.2rem;
+    }
+ 
+    .tag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      padding: 0.3rem 0.65rem;
+      border: 1px solid var(--br);
+      color: var(--g);
+      letter-spacing: 1px;
+    }
+ 
+    .edu-card {
+      background: var(--cb);
+      border: 1px solid var(--br);
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+      transition: border-color 0.2s;
+    }
+ 
+    .edu-card:hover {
+      border-color: var(--g);
+    }
+ 
+    .edu-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--g);
+    }
+ 
+    .edu-deg {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.82rem;
+      color: var(--g);
+      margin-bottom: 0.25rem;
+      font-weight: 700;
+    }
+ 
+    .edu-inst {
+      color: var(--tx);
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+ 
+    .edu-gpa {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--txd);
+    }
+ 
+    .edu-gpa span {
+      color: var(--g);
+    }
+ 
+    .achievement-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+ 
+    .ach-card {
+      background: var(--cb);
+      border: 1px solid var(--br);
+      padding: 1.4rem;
+      text-align: center;
+      clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+      transition: border-color 0.2s;
+    }
+ 
+    .ach-card:hover {
+      border-color: var(--g);
+    }
+ 
+    .ach-num {
+      font-family: 'Orbitron', monospace;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--g);
+      display: block;
+    }
+ 
+    .ach-lbl {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--txd);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: block;
+      margin-top: 0.4rem;
+    }
+ 
+    /* ========== SERVICES ========== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+ 
+    .svc-card {
+      background: var(--cb);
+      border: 1px solid var(--br);
+      padding: 1.6rem;
+      transition: border-color 0.2s, background 0.2s;
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+    }
+ 
+    .svc-card:hover {
+      border-color: var(--g);
+      background: rgba(0, 255, 136, 0.09);
+    }
+ 
+    .svc-icon {
+      font-size: 1.6rem;
+      color: var(--g);
+      margin-bottom: 0.8rem;
+      font-family: 'Orbitron', monospace;
+      font-weight: 900;
+    }
+ 
+    .svc-title {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.82rem;
+      color: var(--g);
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+ 
+    .svc-desc {
+      font-size: 0.9rem;
+      color: var(--txd);
+      line-height: 1.65;
+    }
+ 
+    /* ========== SKILLS ========== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+ 
+    .skill-item {
+      margin-bottom: 1rem;
+    }
+ 
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.4rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.82rem;
+    }
+ 
+    .skill-name {
+      color: var(--tx);
+    }
+ 
+    .skill-pct {
+      color: var(--g);
+    }
+ 
+    .skill-bar {
+      height: 4px;
+      background: rgba(0, 255, 136, 0.1);
+      overflow: hidden;
+    }
+ 
+    .skill-fill {
+      height: 100%;
+      background: var(--g);
+      width: 0;
+      transition: width 1.4s ease;
+    }
+ 
+    /* ========== CONTACT ========== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+    }
+ 
+    .cform-group {
+      margin-bottom: 1.2rem;
+    }
+ 
+    .cform-group label {
+      display: block;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--txd);
+      letter-spacing: 2px;
+      margin-bottom: 0.45rem;
+      text-transform: uppercase;
+    }
+ 
+    .cform-group input,
+    .cform-group textarea {
+      width: 100%;
+      background: var(--cb);
+      border: 1px solid var(--br);
+      color: var(--tx);
+      padding: 0.75rem 1rem;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+ 
+    .cform-group input:focus,
+    .cform-group textarea:focus {
+      border-color: var(--g);
+    }
+ 
+    .cform-group textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+ 
+    .contact-info {
+      padding-top: 0.5rem;
+    }
+ 
+    .ci-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+ 
+    .ci-icon {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--br);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--g);
+      font-size: 1rem;
+      flex-shrink: 0;
+      font-family: 'Orbitron', monospace;
+      font-weight: 700;
+    }
+ 
+    .ci-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--txd);
+      margin-bottom: 0.2rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+ 
+    .ci-val {
+      color: var(--tx);
+      font-size: 0.95rem;
+    }
+ 
+    .status-box {
+      margin-top: 1.5rem;
+      padding: 1.2rem;
+      background: var(--cb);
+      border: 1px solid var(--br);
+    }
+ 
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--g);
+      display: inline-block;
+      animation: blink 1.5s infinite;
+    }
+ 
+    .status-text {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--g);
+      letter-spacing: 1px;
+    }
+ 
+    /* ========== FOOTER ========== */
+    footer {
+      border-top: 1px solid var(--br);
+      text-align: center;
+      padding: 2rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--txd);
+      letter-spacing: 1px;
+      position: relative;
+      z-index: 1;
+    }
+ 
+    footer span {
+      color: var(--g);
+    }
+ 
+    /* ========== ANIMATIONS ========== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+ 
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+ 
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      nav { padding: 0.9rem 1.5rem; }
+      .nav-links { gap: 1rem; }
+      #home { padding-left: 1.5rem; padding-right: 1.5rem; }
+      section { padding: 4rem 1.5rem; }
+      .about-grid,
+      .contact-grid,
+      .skills-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .achievement-grid { grid-template-columns: repeat(3, 1fr); }
+      .hstats { gap: 1.5rem; flex-wrap: wrap; }
+    }
+ 
+    @media (max-width: 480px) {
+      .nav-links { display: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      .achievement-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+ 
+<div class="page">
+ 
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="nav-logo">
+      ABU SAYEED
+      <small>[ PORTFOLIO.DEV ]</small>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+ 
+  <!-- HOME SECTION -->
+  <section id="home">
+    <p class="htag">PORTFOLIO.HOME</p>
+    <h1 class="htitle">ABU<br>SAYEED</h1>
+    <p class="hsub">Full-Stack Developer &amp; CCE Student</p>
+    <p class="hdesc">
+      Passionate learner crafting future-forward digital experiences.
+      Currently pursuing CCE at IIUC while actively building in web
+      development and competitive programming.
+    </p>
+    <div class="hbtns">
+      <a href="#services" class="btn">&#9656; View Projects</a>
+      <a href="#contact" class="btn btn-ghost">Contact Me</a>
+    </div>
+    <div class="hstats">
+      <div class="hstat">
+        <span class="hstat-num">3.25</span>
+        <span class="hstat-lbl">Current CGPA</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat-num">2&#9733;</span>
+        <span class="hstat-lbl">CodeChef Rating</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat-num">1100</span>
+        <span class="hstat-lbl">HackerRank Points</span>
+      </div>
+    </div>
+  </section>
+ 
+  <hr class="sec-divider" />
+ 
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <p class="slabel">// 01. WHO I AM</p>
+    <h2 class="stitle">About <em>Me</em></h2>
+    <div class="sline"></div>
+ 
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I am a passionate and dedicated learner with a strong interest in
+          technology and software development. Currently pursuing my undergraduate
+          degree in Computer and Communication Engineering (CCE) at International
+          Islamic University Chittagong.
+        </p>
+        <p>
+          Alongside my academic journey, I actively work in web development and
+          continuously improve my programming skills through competitive platforms
+          like CodeChef and HackerRank.
+        </p>
+ 
+        <div style="margin-top: 1.5rem;">
+          <div class="info-row"><span class="info-key">NAME</span><span class="info-val">Abu Sayeed</span></div>
+          <div class="info-row"><span class="info-key">BORN</span><span class="info-val">15 May, 2007</span></div>
+          <div class="info-row"><span class="info-key">UNIVERSITY</span><span class="info-val">IIUC, Chittagong</span></div>
+          <div class="info-row"><span class="info-key">DEPT</span><span class="info-val">CCE</span></div>
+          <div class="info-row"><span class="info-key">CGPA</span><span class="info-val">3.25</span></div>
+        </div>
+ 
+        <div class="tags">
+          <span class="tag">JavaScript</span>
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Python</span>
+          <span class="tag">C++</span>
+          <span class="tag">HTML / CSS</span>
+          <span class="tag">Git</span>
+          <span class="tag">MySQL</span>
+        </div>
+      </div>
+ 
+      <div>
+        <p class="slabel" style="margin-bottom: 1rem;">// EDUCATION</p>
+ 
+        <div class="edu-card">
+          <div class="edu-deg">B.Sc — CCE (Ongoing)</div>
+          <div class="edu-inst">International Islamic University Chittagong</div>
+          <div class="edu-gpa">CGPA: <span>3.25</span></div>
+        </div>
+ 
+        <div class="edu-card">
+          <div class="edu-deg">HSC — Science</div>
+          <div class="edu-inst">Mostafa Hakim Degree College</div>
+          <div class="edu-gpa">GPA: <span>4.73</span></div>
+        </div>
+ 
+        <div class="edu-card">
+          <div class="edu-deg">SSC — Science</div>
+          <div class="edu-inst">Bangladesh Railway Govt. High School</div>
+          <div class="edu-gpa">GPA: <span>5.00 (Golden A+)</span></div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="achievement-grid">
+      <div class="ach-card">
+        <span class="ach-num">5.00</span>
+        <span class="ach-lbl">SSC GPA</span>
+      </div>
+      <div class="ach-card">
+        <span class="ach-num">2&#9733;</span>
+        <span class="ach-lbl">CodeChef</span>
+      </div>
+      <div class="ach-card">
+        <span class="ach-num">1100</span>
+        <span class="ach-lbl">HackerRank Pts</span>
+      </div>
+    </div>
+  </section>
+ 
+  <hr class="sec-divider" />
+ 
+  <!-- SERVICES SECTION -->
+  <section id="services">
+    <p class="slabel">// 02. WHAT I DO</p>
+    <h2 class="stitle">My <em>Services</em></h2>
+    <div class="sline"></div>
+ 
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon">&lt;/&gt;</div>
+        <div class="svc-title">Web Development</div>
+        <div class="svc-desc">Building responsive and modern websites using HTML, CSS, JavaScript, and React. Clean code, fast performance.</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">&#9670;</div>
+        <div class="svc-title">Backend Dev</div>
+        <div class="svc-desc">Server-side development with Node.js and database integration using MySQL. Robust and scalable APIs.</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">&#8857;</div>
+        <div class="svc-title">Problem Solving</div>
+        <div class="svc-desc">Competitive programming with C++ and Python. 2-star CodeChef, 1100 pts HackerRank. Algorithmic thinking.</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">&#9670;</div>
+        <div class="svc-title">UI / UX Design</div>
+        <div class="svc-desc">Crafting visually appealing, user-friendly interfaces with a focus on modern design principles and usability.</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">&infin;</div>
+        <div class="svc-title">DSA &amp; Algorithms</div>
+        <div class="svc-desc">Strong foundation in data structures and algorithms. Ready to tackle complex engineering problems efficiently.</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">&#9866;</div>
+        <div class="svc-title">Tech Consulting</div>
+        <div class="svc-desc">Helping individuals and small teams choose the right tech stack and architecture for their projects.</div>
+      </div>
+    </div>
+  </section>
+ 
+  <hr class="sec-divider" />
+ 
+  <!-- SKILLS SECTION -->
+  <section id="skills">
+    <p class="slabel">// 03. MY SKILLS</p>
+    <h2 class="stitle">Tech <em>Stack</em></h2>
+    <div class="sline"></div>
+ 
+    <div class="skills-grid">
+      <div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">HTML / CSS</span>
+            <span class="skill-pct">90%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-w="90"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">JavaScript</span>
+            <span class="skill-pct">78%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-w="78"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">React.js</span>
+            <span class="skill-pct">72%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-w="72"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Node.js</span>
+            <span class="skill-pct">65%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-w="65"></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">C++ (DSA)</span>
+            <span class="skill-pct">80%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-w="80"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Python</span>
+            <span class="skill-pct">68%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-w="68"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">MySQL</span>
+            <span class="skill-pct">60%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-w="60"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">Git / GitHub</span>
+            <span class="skill-pct">75%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-w="75"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <hr class="sec-divider" />
+ 
+  <!-- CONTACT SECTION -->
+  <section id="contact">
+    <p class="slabel">// 04. GET IN TOUCH</p>
+    <h2 class="stitle">Contact <em>Me</em></h2>
+    <div class="sline"></div>
+ 
+    <div class="contact-grid">
+      <div>
+        <div class="cform-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Enter your name" />
+        </div>
+        <div class="cform-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com" />
+        </div>
+        <div class="cform-group">
+          <label>Subject</label>
+          <input type="text" placeholder="Project inquiry..." />
+        </div>
+        <div class="cform-group">
+          <label>Message</label>
+          <textarea placeholder="Tell me about your project..."></textarea>
+        </div>
+        <button class="btn" type="button">&#9656; Send Message</button>
+      </div>
+ 
+      <div class="contact-info">
+        <div class="ci-item">
+          <div class="ci-icon">@</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-val">ms2150125@email.com</div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">&#9670;</div>
+          <div>
+            <div class="ci-label">Location</div>
+            <div class="ci-val">Chittagong, Bangladesh</div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">&#9733;</div>
+          <div>
+            <div class="ci-label">CodeChef</div>
+            <div class="ci-val">2-Star Rated Programmer</div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">H</div>
+          <div>
+            <div class="ci-label">HackerRank</div>
+            <div class="ci-val">1100+ Points Earned</div>
+          </div>
+        </div>
+ 
+        <div class="status-box">
+          <p class="slabel" style="margin-bottom: 0.6rem;">// CURRENT STATUS</p>
+          <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <span class="status-dot"></span>
+            <span class="status-text">AVAILABLE FOR OPPORTUNITIES</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- FOOTER -->
+  <footer>
+    <span>ABU SAYEED</span> &mdash;
+    CCE Student @ IIUC &mdash;
+    Crafting Future-Forward Digital Experiences &mdash;
+    &copy; 2025
+  </footer>
+ 
+</div>
+ 
+<!-- JAVASCRIPT -->
+<script>
+  // Skill bars animate on scroll
+  const fills = document.querySelectorAll('.skill-fill');
+ 
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.width = entry.target.dataset.w + '%';
+      }
+    });
+  }, { threshold: 0.3 });
+ 
+  fills.forEach(el => observer.observe(el));
+ 
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+ 
+  // Active nav highlight on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+ 
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 120) {
+        current = sec.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.style.color = link.getAttribute('href') === '#' + current
+        ? 'var(--g)'
+        : '';
+    });
+  });
+</script>
+ 
+</body>
+</html>
